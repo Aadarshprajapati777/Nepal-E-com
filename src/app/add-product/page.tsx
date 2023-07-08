@@ -1,3 +1,4 @@
+import FormSubmitButton from "@/component/FormSubmitButton"
 import { prisma } from "../lib/db/prisma"
 import {redirect} from 'next/navigation'    
 export const metadata = {
@@ -14,8 +15,8 @@ async function addProduct(formData:FormData){
     const price = Number(formData.get('price') || 0);
     
 
-    if(!name || !description || !imageUrl || !price ){
 
+    if(!name || !description || !imageUrl || !price ){
         throw Error("Please fill all the fields");
     }
 
@@ -65,7 +66,7 @@ export default function AddProductPage() {
                 className="input-bordered input mb-4 w-full"
                 />
 
-                <button type="submit" className="btn btn-primary btn-block">Add Product </button>
+                <FormSubmitButton  className=" btn-block">Add Product </FormSubmitButton>
             </form>
         </div>
     )
